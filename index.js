@@ -35,11 +35,11 @@ function run() {
 
     if (removeRequest) {
       octokit.pulls.removeRequestedReviewers(params).then(r=>{
-        console.log(r)
+        core.info(r)
       });
     } else {
       octokit.pulls.requestReviewers(params).then(r=>{
-        console.log(r)
+        core.info(r)
       });
     }
   } catch (error) {
