@@ -1,12 +1,13 @@
-name: "Add Pull Request Reviewer"
-description: "Adds reviewer(s) to a pull request"
+name: "Add Pull Request Reviewer/Team"
+description: "Adds reviewer(s) and/or team(s) to a pull request"
 branding:
   icon: "bar-chart"
   color: "green"
 inputs:
   reviewers:
     description: "Reviewer(s) to add, in comma separated list."
-    required: true
+  team_reviewers:
+    description: "Reviewer team slug(s) to add, in comma separated list."
   token:
     description: GitHub Personal Access Token
   remove:
