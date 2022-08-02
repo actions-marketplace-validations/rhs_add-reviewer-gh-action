@@ -494,15 +494,19 @@ function run() {
       team_reviewers: teamReviewers
     };
 
+    var response
     if (removeRequest) {
-      octokit.pulls.removeRequestedReviewers(params).then(r=>{
-        core.info(r)
-      });
+      response = octokit.pulls.removeRequestedReviewers(params);
     } else {
-      octokit.pulls.requestReviewers(params).then(r=>{
-        core.info(r)
-      });
+      response = octokit.pulls.requestReviewers(params);
     }
+
+    response.then(r=>{
+      core.info(JSON.stringify(r))
+    }).catch(e=>{
+      core.setFailed(e.message);
+    });
+
   } catch (error) {
     core.setFailed(error.message);
   }
