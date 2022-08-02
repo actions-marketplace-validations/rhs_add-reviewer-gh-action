@@ -34,9 +34,13 @@ function run() {
     };
 
     if (removeRequest) {
-      octokit.pulls.removeRequestedReviewers(params);
+      octokit.pulls.removeRequestedReviewers(params).then(r=>{
+        console.log(r)
+      });
     } else {
-      octokit.pulls.requestReviewers(params);
+      octokit.pulls.requestReviewers(params).then(r=>{
+        console.log(r)
+      });
     }
   } catch (error) {
     core.setFailed(error.message);
