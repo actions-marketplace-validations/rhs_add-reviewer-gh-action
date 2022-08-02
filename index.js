@@ -30,7 +30,7 @@ function run() {
       ...context.repo,
       pull_number: pullRequestNumber,
       reviewers: prReviewers,
-      team_reviewers: teamReviewers,
+      team_reviewers: teamReviewers
     };
 
     if (removeRequest) {
