@@ -12,8 +12,10 @@ const github = require("@actions/github");
 function run() {
   try {
     const reviewers = core.getInput("reviewers");
+    const teams = core.getInput("team_reviewers");
     const removeRequest = core.getInput("remove").toLowerCase() === "true";
     const prReviewers = reviewers.split(", ");
+    const teamReviewers = teams.split(", ");
     const token = process.env["GITHUB_TOKEN"] || core.getInput("token");
     const octokit = new github.getOctokit(token);
     const context = github.context;
@@ -28,6 +30,7 @@ function run() {
       ...context.repo,
       pull_number: pullRequestNumber,
       reviewers: prReviewers,
+      team_reviewers: teamReviewers,
     };
 
     if (removeRequest) {
